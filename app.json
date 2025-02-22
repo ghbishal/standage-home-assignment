@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "standage-home-assignment",
+    "slug": "standage-home-assignment",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "newArchEnabled": true,
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [["expo-router"]],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "scheme": "myapp"
+  }
+}

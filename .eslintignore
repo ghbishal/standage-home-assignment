@@ -1,0 +1,12 @@
+dist
+lib
+CHANGELOG.md
+/shim.d.ts
+/pnpm-lock.yml
+!/.*.cjs
+!/.changeset
+storybook-static/**/*.js
+ios/
+android/
+nativewind-env.d.ts
+.prettierrc.js
