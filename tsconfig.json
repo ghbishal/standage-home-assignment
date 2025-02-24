@@ -1,13 +1,49 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    // Ensure that .d.ts files are created by tsc, but not .js files
+    "declaration": false,
+    // Ensure that Babel can safely transpile files in the TypeScript project
+
+    "lib": ["es6"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+
+    /* TYPE CHECKING RULES */
     "strict": true,
+    // "noImplicitAny": true, // Included in "Strict"
+    // "noImplicitThis": true, // Included in "Strict"
+    // "strictBindCallApply": true, // Included in "Strict"
+    // "strictFunctionTypes": true, // Included in "Strict"
+    // "strictNullChecks": true, // Included in "Strict"
+    // "strictPropertyInitialization": true, // Included in "Strict"
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "useUnknownInCatchVariables": true,
+    "noUncheckedIndexedAccess": true, // TLDR - Checking an indexed value (array[0]) now forces type <T | undefined> as there is no confirmation that index exists
+    // THE BELOW ARE EXTRA STRICT OPTIONS THAT SHOULD ONLY BY CONSIDERED IN VERY SAFE PROJECTS
+    // "exactOptionalPropertyTypes": true, // TLDR - Setting to undefined is not the same as a property not being defined at all
+    // "noPropertyAccessFromIndexSignature": true, // TLDR - Use dot notation for objects if youre sure it exists, use ['index'] notaion if unsure
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "jsx": "react-native",
+    "noEmit": true,
+    "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "esModuleInterop": true,
-    "allowJs": true
+    }
   },
   "exclude": [
     "node_modules",
