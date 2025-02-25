@@ -11,7 +11,7 @@ interface MessageStore {
   addMessage: (message: string) => void;
   setReplyMessage: (reply: ReplyMessageType | null) => void;
   clearReplyMessage: () => void;
-  getTranslatedMessage: (messageId: number) => string;
+  getTranslatedMessage: (messageId: number, originalMessage: string) => string;
 }
 
 const preloadedTranslations: Record<number, { en: string; ja: string }> = {
@@ -24,6 +24,16 @@ const preloadedTranslations: Record<number, { en: string; ja: string }> = {
     ja: '時間をかけてください。ただ、2週間が妥当に思えます。',
   },
 };
+
+// NOTE : This is not a good way of doing, if the message are mixed or any others can cause a problem
+function detectLanguage(text: string): 'en' | 'ja' | 'unknown' {
+  const japaneseRegex = /[\u3040-\u30FF\u4E00-\u9FFF]/;
+  return japaneseRegex.test(text)
+    ? 'ja'
+    : /[a-zA-Z]/.test(text)
+      ? 'en'
+      : 'unknown';
+}
 
 export const useMessageStore = create<MessageStore>((set, get) => ({
   messages: initialMessages,
@@ -51,18 +61,25 @@ export const useMessageStore = create<MessageStore>((set, get) => ({
 
   clearReplyMessage: () => set({ replyMessage: null }),
 
-  getTranslatedMessage: (messageId) => {
-    const { translations, messages } = get();
-    const currentLang = i18n.language;
+  getTranslatedMessage: (messageId, originalMessage) => {
+    const { translations } = get();
+    const detectedLanguage = detectLanguage(originalMessage);
+
+    if (detectedLanguage === 'unknown') {
+      return i18n.language === 'ja'
+        ? 'この言語の翻訳は利用できません'
+        : 'Translation is not available for this language';
+    }
 
     if (translations[messageId]) {
-      return (
-        translations[messageId][currentLang as 'en' | 'ja'] ||
-        messages.find((m) => m.id === messageId)?.message ||
-        ''
-      );
+      if (detectedLanguage === 'en') {
+        return translations[messageId].ja;
+      } else if (detectedLanguage === 'ja') {
+        return translations[messageId].en;
+      }
     }
-    return currentLang === 'ja'
+
+    return detectedLanguage === 'ja'
       ? '翻訳はまだ利用できません'
       : 'Translation not available yet';
   },
