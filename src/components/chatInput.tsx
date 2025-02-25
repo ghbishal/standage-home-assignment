@@ -29,7 +29,9 @@ export function ChatInput({
       <View className="mx-3 flex-row items-center justify-between">
         <View className="flex-row justify-between rounded-lg border border-neutral-300 bg-white p-3">
           <TextInput
+            editable
             value={input}
+            multiline
             onChangeText={setInput}
             placeholder="Type message ..."
             className="mr-3 flex-1"
