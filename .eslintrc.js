@@ -1,5 +1,10 @@
 module.exports = {
-  extends: ['expo', 'plugin:tailwindcss/recommended', 'prettier'],
+  extends: [
+    'expo',
+    'plugin:tailwindcss/recommended',
+    'prettier',
+    'plugin:@typescript-eslint/recommended',
+  ],
   plugins: [
     'prettier',
     'unicorn',
