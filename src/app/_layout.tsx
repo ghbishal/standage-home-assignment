@@ -4,16 +4,18 @@ import '@/i18n/i18n';
 
 import { Stack } from 'expo-router';
 import { type ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Image, TouchableOpacity } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StandageLogo } from '@/components/standageLogo';
 
 export default function RootLayout() {
+  const { t } = useTranslation('translation', { keyPrefix: 'navigation' });
   return (
     <RootProvider>
       <Stack>
-        <Stack.Screen name="index" options={{ title: 'Home' }} />
+        <Stack.Screen name="index" options={{ title: t('home') }} />
         <Stack.Screen
           name="(chatList)"
           options={{
@@ -45,6 +47,10 @@ export default function RootLayout() {
               </TouchableOpacity>
             ),
           }}
+        />
+        <Stack.Screen
+          name="modal/status"
+          options={{ presentation: 'modal', title: t('change_status') }}
         />
       </Stack>
     </RootProvider>

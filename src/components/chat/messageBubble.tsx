@@ -2,6 +2,7 @@ import * as Clipboard from 'expo-clipboard';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, Text, Image } from 'react-native';
+import { ToolChip } from '../ui/toolChip';
 import { ActionModal } from './actionModal';
 import { ReplyMessage } from './replyMessage';
 import { cn, formatDate } from '@/lib/utils';
@@ -45,12 +46,15 @@ export function MessageBubble({ message }: MessageBubbleProps) {
             className="size-6 rounded-full"
           />
         )}
-        <Text className="text-sm font-semibold text-gray-400">
+        <Text className="text-sm font-semibold text-gray-500">
           {message.sender}
         </Text>
-        <Text className="rounded-xl bg-slate-600 p-1 text-xs tracking-wider text-white">
-          {formatDate(message.timestamp, 'timeOnly')}
-        </Text>
+
+        <ToolChip
+          label={formatDate(message.timestamp, 'timeOnly')}
+          variant="pressed"
+          size="sm"
+        />
         {isUser && (
           <Image
             source={{ uri: defaultUser.avatarUrl }}
