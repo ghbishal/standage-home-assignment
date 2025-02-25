@@ -6,12 +6,15 @@ import { ReplyMessage } from './replyMessage';
 import { type ReplyMessageType, type MessageType } from '@/lib/chatData';
 import { cn } from '@/lib/utils';
 
-type ChatItemProps = {
+type MessageBubbleProps = {
   message: MessageType;
   setReplyMessage: (reply: ReplyMessageType) => void;
 };
 
-export function ChatItem({ message, setReplyMessage }: ChatItemProps) {
+export function MessageBubble({
+  message,
+  setReplyMessage,
+}: MessageBubbleProps) {
   const isUser = message.sender === 'Germineau Nicolas';
   const { t } = useTranslation('translation', { keyPrefix: 'chat_item' });
   // TODO: options Actions
