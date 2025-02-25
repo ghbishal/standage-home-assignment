@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, Text } from 'react-native';
 import { ActionModal } from './actionModal';
@@ -13,13 +13,17 @@ type MessageBubbleProps = {
 };
 
 export function MessageBubble({ message }: MessageBubbleProps) {
-  const { t } = useTranslation('translation', { keyPrefix: 'chat_item' });
-
   const { defaultUser } = useUserStore();
   const isUser = message.sender === defaultUser.name;
-  const { setReplyMessage } = useMessageStore();
+  const { getTranslatedMessage, setReplyMessage } = useMessageStore();
+  const { t } = useTranslation('translation', { keyPrefix: 'chat_item' });
 
-  // TODO: options Actions
+  const [isTranslated, setIsTranslated] = useState(false);
+
+  const handleTranslate = () => {
+    setIsTranslated((prev) => !prev);
+  };
+
   return (
     <View className={cn('flex-col', isUser ? 'self-end' : 'self-start')}>
       <ActionModal
@@ -29,8 +33,8 @@ export function MessageBubble({ message }: MessageBubbleProps) {
             onSelect: () => console.log('message', message.message),
           },
           {
-            label: t('translate'),
-            onSelect: () => console.log('Translate:', message.message),
+            label: isTranslated ? t('translate_en') : t('translate_ja'),
+            onSelect: handleTranslate,
           },
           {
             label: t('reply'),
@@ -53,7 +57,9 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       >
         <ReplyMessage replyMessage={message.replyTo} />
         <Text className="text-sm font-bold">{message.sender}</Text>
-        <Text className="text-base">{message.message}</Text>
+        <Text className="text-base">
+          {isTranslated ? getTranslatedMessage(message.id) : message.message}
+        </Text>
         <Text className="text-xs text-gray-500">
           {new Date(message.timestamp).toLocaleTimeString()}
         </Text>

@@ -11,6 +11,8 @@ export const EN = {
   chat_item: {
     copy: 'Copy',
     translate: 'Japanese Display',
+    translate_en: 'English Display',
+    translate_ja: 'Japanese Display',
     reply: 'Reply',
   },
 };
