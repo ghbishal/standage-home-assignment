@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { ActionModal } from './actionModal';
 import { ReplyMessage } from './replyMessage';
-import { cn } from '@/lib/utils';
+import { cn, formatDate } from '@/lib/utils';
 import { useMessageStore } from '@/store/useMessageStore';
 import { useUserStore } from '@/store/useUserStore';
 import { type MessageType } from '@/types/chat';
@@ -13,15 +13,46 @@ type MessageBubbleProps = {
 };
 
 export function MessageBubble({ message }: MessageBubbleProps) {
-  const { t } = useTranslation('translation', { keyPrefix: 'chat_item' });
-
   const { defaultUser } = useUserStore();
   const isUser = message.sender === defaultUser.name;
-  const { setReplyMessage } = useMessageStore();
+  const { getTranslatedMessage, setReplyMessage } = useMessageStore();
+  const { t } = useTranslation('translation', { keyPrefix: 'chat_item' });
 
-  // TODO: options Actions
+  const [isTranslated, setIsTranslated] = useState(false);
+
+  const handleTranslate = () => {
+    setIsTranslated((prev) => !prev);
+  };
+
   return (
     <View className={cn('flex-col', isUser ? 'self-end' : 'self-start')}>
+      <View
+        className={cn(
+          'flex-row items-center gap-2 mb-1',
+          isUser ? 'justify-end' : 'justify-start'
+        )}
+      >
+        {!isUser && (
+          <Image
+            source={{
+              uri: 'https://cdn-icons-png.flaticon.com/512/847/847969.png',
+            }}
+            className="size-6 rounded-full"
+          />
+        )}
+        <Text className="text-sm font-semibold text-gray-400">
+          {message.sender}
+        </Text>
+        <Text className="rounded-xl bg-slate-600 p-1 text-xs tracking-wider text-white">
+          {formatDate(message.timestamp, 'timeOnly')}
+        </Text>
+        {isUser && (
+          <Image
+            source={{ uri: defaultUser.avatarUrl }}
+            className="size-6 rounded-full"
+          />
+        )}
+      </View>
       <ActionModal
         options={[
           {
@@ -29,8 +60,8 @@ export function MessageBubble({ message }: MessageBubbleProps) {
             onSelect: () => console.log('message', message.message),
           },
           {
-            label: t('translate'),
-            onSelect: () => console.log('Translate:', message.message),
+            label: isTranslated ? t('translate_en') : t('translate_ja'),
+            onSelect: handleTranslate,
           },
           {
             label: t('reply'),
@@ -52,10 +83,10 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         style={{ maxWidth: 350 }}
       >
         <ReplyMessage replyMessage={message.replyTo} />
-        <Text className="text-sm font-bold">{message.sender}</Text>
-        <Text className="text-base">{message.message}</Text>
-        <Text className="text-xs text-gray-500">
-          {new Date(message.timestamp).toLocaleTimeString()}
+        <Text className="text-base">
+          {isTranslated
+            ? getTranslatedMessage(message.id, message.message)
+            : message.message}
         </Text>
       </View>
     </View>
