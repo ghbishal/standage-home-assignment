@@ -1,4 +1,5 @@
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { IconButton } from '../icons/iconButton';
 import { cn } from '@/lib/utils';
 import { type ReplyMessageType } from '@/types/chat';
 
@@ -31,16 +32,7 @@ export function ReplyMessage({
         <Text className="text-xs italic">{replyMessage.message}</Text>
       </View>
 
-      {clearReply && (
-        <TouchableOpacity onPress={clearReply} className="p-2">
-          <Image
-            className="size-3"
-            source={{
-              uri: 'https://cdn-icons-png.flaticon.com/128/2976/2976286.png',
-            }}
-          />
-        </TouchableOpacity>
-      )}
+      {clearReply && <IconButton name="Cancel" onPress={clearReply} />}
     </View>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, TextInput, TouchableOpacity } from 'react-native';
+import { StyledIcon } from '../icons/styledIcon';
 import { ReplyMessage } from './replyMessage';
 import { useMessageStore } from '@/store/useMessageStore';
 
@@ -12,7 +13,7 @@ export function ChatInput() {
 
   const handleSend = () => {
     if (!input.trim()) return;
-    addMessage(input, 'Bishal');
+    addMessage(input);
     setInput('');
   };
   return (
@@ -32,12 +33,7 @@ export function ChatInput() {
             className="mr-3 flex-1"
           />
           <TouchableOpacity onPress={handleSend} className="rounded-full">
-            <Image
-              className="size-5"
-              source={{
-                uri: 'https://cdn-icons-png.flaticon.com/128/876/876777.png',
-              }}
-            />
+            <StyledIcon name="Send" />
           </TouchableOpacity>
         </View>
       </View>
