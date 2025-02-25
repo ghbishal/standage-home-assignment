@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { View, TextInput, TouchableOpacity, Image } from 'react-native';
 import { ReplyMessage } from './replyMessage';
 
@@ -16,6 +17,7 @@ export function ChatInput({
   replyMessage,
 }: ChatInputProps) {
   const [input, setInput] = useState('');
+  const { t } = useTranslation('translation', { keyPrefix: 'chat_input' });
 
   const handleSend = () => {
     if (!input.trim()) return;
@@ -33,7 +35,7 @@ export function ChatInput({
             value={input}
             multiline
             onChangeText={setInput}
-            placeholder="Type message ..."
+            placeholder={t('placeholder')}
             className="mr-3 flex-1"
           />
           <TouchableOpacity onPress={handleSend} className="rounded-full">
