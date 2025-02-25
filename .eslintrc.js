@@ -6,7 +6,6 @@ module.exports = {
     '@typescript-eslint',
     'unused-imports',
     'tailwindcss',
-    'simple-import-sort',
     'eslint-plugin-react-compiler',
   ],
   parserOptions: {
@@ -21,8 +20,6 @@ module.exports = {
         ignore: ['/android', '/ios'],
       },
     ],
-    'max-params': ['error', 3], // Limit the number of parameters in a function to use object instead
-    'max-lines-per-function': ['error', 70],
     'react/display-name': 'off',
     'react/no-inline-styles': 'off',
     'react/destructuring-assignment': 'off', // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
@@ -44,9 +41,16 @@ module.exports = {
         officialSorting: true,
       },
     ], // Follow the same ordering as the official plugin `prettier-plugin-tailwindcss`
-    'simple-import-sort/imports': 'error', // Import configuration for `eslint-plugin-simple-import-sort`
-    'simple-import-sort/exports': 'error', // Export configuration for `eslint-plugin-simple-import-sort`
-    '@typescript-eslint/no-unused-vars': 'off',
+    'import/order': [
+      'warn',
+      {
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
+    '@typescript-eslint/no-unused-vars': 'error',
     'tailwindcss/no-custom-classname': 'off',
     'unused-imports/no-unused-imports': 'error',
     'unused-imports/no-unused-vars': [
