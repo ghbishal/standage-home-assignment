@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { Image, TouchableOpacity } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { IconButton } from '@/components/icons/iconButton';
 import { StandageLogo } from '@/components/standageLogo';
 
 export default function RootLayout() {
@@ -32,20 +33,7 @@ export default function RootLayout() {
               </TouchableOpacity>
             ),
             headerTitle: () => <StandageLogo width={100} />,
-            headerRight: () => (
-              <TouchableOpacity
-                onPress={() =>
-                  console.log('open side drawer to language change')
-                }
-              >
-                <Image
-                  className="size-6 rounded-full"
-                  source={{
-                    uri: 'https://cdn-icons-png.flaticon.com/128/2040/2040504.png',
-                  }}
-                />
-              </TouchableOpacity>
-            ),
+            headerRight: () => <IconButton name="Setting" size="large" />,
           }}
         />
         <Stack.Screen

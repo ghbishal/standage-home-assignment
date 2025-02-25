@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { Text, View, Image } from 'react-native';
+import { Text, View } from 'react-native';
+import { StyledIcon } from '../icons/styledIcon';
 import { ToolChip } from '../ui/toolChip';
 import { STATUS_STYLES } from './constants';
 import { cn } from '@/lib/utils';
@@ -20,12 +21,7 @@ export function StatusItem({ time, statuses, isLastItem = false }: Props) {
     >
       <View className="mr-1 flex-row items-center gap-1">
         <ToolChip label={time} variant="pressed" size="sm" />
-        <Image
-          source={{
-            uri: 'https://cdn-icons-png.flaticon.com/128/2989/2989838.png',
-          }}
-          className="size-5"
-        />
+        <StyledIcon name="Live" />
         <Text className="text-sm text-gray-600">{t('status_changed')}</Text>
       </View>
       <View className="flex-row items-center gap-2">

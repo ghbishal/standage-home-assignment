@@ -1,4 +1,3 @@
-// ToolChip.tsx
 import { cva, type VariantProps } from 'class-variance-authority';
 import React from 'react';
 import { View, Text } from 'react-native';

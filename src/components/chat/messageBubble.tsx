@@ -2,6 +2,7 @@ import * as Clipboard from 'expo-clipboard';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, Text, Image } from 'react-native';
+import { StyledIcon } from '../icons/styledIcon';
 import { ToolChip } from '../ui/toolChip';
 import { ActionModal } from './actionModal';
 import { ReplyMessage } from './replyMessage';
@@ -38,14 +39,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           isUser ? 'justify-end' : 'justify-start'
         )}
       >
-        {!isUser && (
-          <Image
-            source={{
-              uri: 'https://cdn-icons-png.flaticon.com/512/847/847969.png',
-            }}
-            className="size-6 rounded-full"
-          />
-        )}
+        {!isUser && <StyledIcon name="PersonFill" size="medium" />}
         <Text className="text-sm font-semibold text-gray-500">
           {message.sender}
         </Text>
