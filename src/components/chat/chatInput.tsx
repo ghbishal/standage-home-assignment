@@ -2,32 +2,25 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, TextInput, TouchableOpacity, Image } from 'react-native';
 import { ReplyMessage } from './replyMessage';
+import { useMessageStore } from '@/store/useMessageStore';
 
-type ChatInputProps = {
-  onSendMessage: (message: string) => void;
-  scrollToEnd: () => void;
-  replyMessage: any;
-  clearReply: any;
-};
-
-export function ChatInput({
-  onSendMessage,
-  scrollToEnd,
-  clearReply,
-  replyMessage,
-}: ChatInputProps) {
+export function ChatInput() {
   const [input, setInput] = useState('');
+
+  const { replyMessage, clearReplyMessage, addMessage } = useMessageStore();
   const { t } = useTranslation('translation', { keyPrefix: 'chat_input' });
 
   const handleSend = () => {
     if (!input.trim()) return;
-    onSendMessage(input);
+    addMessage(input, 'Bishal');
     setInput('');
-    scrollToEnd();
   };
   return (
     <View className="bg-transparent">
-      <ReplyMessage clearReply={clearReply} replyMessage={replyMessage} />
+      <ReplyMessage
+        clearReply={clearReplyMessage}
+        replyMessage={replyMessage}
+      />
       <View className="mx-3 flex-row items-center justify-between">
         <View className="flex-row justify-between rounded-lg border border-neutral-300 bg-white p-3">
           <TextInput

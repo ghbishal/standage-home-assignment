@@ -1,5 +1,11 @@
 module.exports = {
-  extends: ['expo', 'plugin:tailwindcss/recommended', 'prettier'],
+  extends: [
+    'expo',
+    'plugin:tailwindcss/recommended',
+    'prettier',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  root: true,
   plugins: [
     'prettier',
     'unicorn',
@@ -8,8 +14,10 @@ module.exports = {
     'tailwindcss',
     'eslint-plugin-react-compiler',
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: './tsconfig.json',
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
   rules: {
     'prettier/prettier': 'warn',

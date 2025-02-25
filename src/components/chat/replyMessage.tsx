@@ -1,6 +1,6 @@
 import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { type ReplyMessageType } from '@/lib/chatData';
 import { cn } from '@/lib/utils';
+import { type ReplyMessageType } from '@/types/chat';
 
 type ReplyMessageProps = {
   replyMessage?: ReplyMessageType | null;

@@ -3,17 +3,22 @@ import { useTranslation } from 'react-i18next';
 import { View, Text } from 'react-native';
 import { ActionModal } from './actionModal';
 import { ReplyMessage } from './replyMessage';
-import { type ReplyMessageType, type MessageType } from '@/lib/chatData';
 import { cn } from '@/lib/utils';
+import { useMessageStore } from '@/store/useMessageStore';
+import { useUserStore } from '@/store/useUserStore';
+import { type MessageType } from '@/types/chat';
 
-type ChatItemProps = {
+type MessageBubbleProps = {
   message: MessageType;
-  setReplyMessage: (reply: ReplyMessageType) => void;
 };
 
-export function ChatItem({ message, setReplyMessage }: ChatItemProps) {
-  const isUser = message.sender === 'Germineau Nicolas';
+export function MessageBubble({ message }: MessageBubbleProps) {
   const { t } = useTranslation('translation', { keyPrefix: 'chat_item' });
+
+  const { defaultUser } = useUserStore();
+  const isUser = message.sender === defaultUser.name;
+  const { setReplyMessage } = useMessageStore();
+
   // TODO: options Actions
   return (
     <View className={cn('flex-col', isUser ? 'self-end' : 'self-start')}>
