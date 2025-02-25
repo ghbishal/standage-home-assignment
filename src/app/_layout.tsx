@@ -1,5 +1,6 @@
 // Import  global CSS file
 import '../../global.css';
+import '@/i18n/i18n';
 
 import { Stack } from 'expo-router';
 import { type ReactNode } from 'react';

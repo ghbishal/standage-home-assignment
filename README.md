@@ -77,3 +77,11 @@ npm start
   ```sh
   npm run ios
   ```
+
+## Package Used
+
+1. [expo](https://expo.dev/)
+2. [nativeWind](https://www.nativewind.dev/)
+3. [lottieAnimation](https://airbnb.io/lottie/#/react-native)
+4. [tabNavigation](https://reactnavigation.org/docs/material-top-tab-navigator/)
+5. [i18n](https://react.i18next.com/latest/usetranslation-hook)

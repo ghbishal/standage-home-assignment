@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { View, Text } from 'react-native';
 import { ActionModal } from './actionModal';
 import { ReplyMessage } from './replyMessage';
@@ -12,21 +13,22 @@ type ChatItemProps = {
 
 export function ChatItem({ message, setReplyMessage }: ChatItemProps) {
   const isUser = message.sender === 'Germineau Nicolas';
+  const { t } = useTranslation('translation', { keyPrefix: 'chat_item' });
   // TODO: options Actions
   return (
     <View className={cn('flex-col', isUser ? 'self-end' : 'self-start')}>
       <ActionModal
         options={[
           {
-            label: '📋 Copy',
+            label: t('copy'),
             onSelect: () => console.log('message', message.message),
           },
           {
-            label: '🌐 Translate',
+            label: t('translate'),
             onSelect: () => console.log('Translate:', message.message),
           },
           {
-            label: '↩️ Reply',
+            label: t('reply'),
             onSelect: () =>
               setReplyMessage({
                 id: message.id,
