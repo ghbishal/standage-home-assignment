@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, TextInput, TouchableOpacity, Image } from 'react-native';
 import { ReplyMessage } from './replyMessage';
+import { type ReplyMessageType } from '@/types/chat';
 
 type ChatInputProps = {
   onSendMessage: (message: string) => void;
   scrollToEnd: () => void;
-  replyMessage: any;
-  clearReply: any;
+  replyMessage: ReplyMessageType | null;
+  clearReply: () => void;
 };
 
 export function ChatInput({
