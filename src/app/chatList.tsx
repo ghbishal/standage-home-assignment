@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import { ChatInput } from '@/components/chatInput';
-import ChatItem from '@/components/chatItem';
+import { ChatItem } from '@/components/chatItem';
 import { messages, type MessageType } from '@/lib/chatData';
 
 export default function ChatList() {
