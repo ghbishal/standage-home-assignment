@@ -10,7 +10,7 @@ export default function StartPage() {
       <Text>Hello World</Text>
       <Button
         label="Go To Chat Page"
-        onPress={() => router.push('/chatList')}
+        onPress={() => router.replace('/(chatList)/externalChat')}
       />
     </View>
   );
