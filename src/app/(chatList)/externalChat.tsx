@@ -6,26 +6,30 @@ import {
   View,
   SafeAreaView,
 } from 'react-native';
-import { ChatInput } from '@/components/chatInput';
-import { ChatItem } from '@/components/chatItem';
-import {
-  messages,
-  type ReplyMessageType,
-  type MessageType,
-} from '@/lib/chatData';
+import { ChatInput, MessageBubble } from '@/components/chat';
+import { messages } from '@/lib/chatData';
+import { type MessageType, type ReplyMessageType } from '@/types/chat';
 
 export default function ExternalChat() {
   const [messageList, setMessageList] = useState<MessageType[]>(messages);
   const [replyMessage, setReplyMessage] = useState<ReplyMessageType | null>(
     null
   );
-  const messageRef = useRef<ScrollView>(null);
+  const scrollViewRef = useRef<ScrollView>(null);
 
   const clearReplyMessage = () => setReplyMessage(null);
 
   useEffect(() => {
     scrollToEnd();
   }, [messageList, replyMessage]);
+
+  function scrollToEnd() {
+    // TODO: fix:- scroll to end not working
+
+    requestAnimationFrame(() => {
+      scrollViewRef.current?.scrollToEnd({ animated: true });
+    });
+  }
 
   const handleSendMessage = (newMessage: string) => {
     if (!newMessage.trim()) return;
@@ -42,13 +46,6 @@ export default function ExternalChat() {
     scrollToEnd();
   };
 
-  function scrollToEnd() {
-    // TODO: fix:- scroll to end not working
-
-    setTimeout(() => {
-      messageRef?.current?.scrollToEnd({ animated: true });
-    }, 100);
-  }
   return (
     <SafeAreaView className="flex-1">
       <KeyboardAvoidingView
@@ -64,7 +61,7 @@ export default function ExternalChat() {
         >
           <View className="my-2 flex-1 gap-2 px-3">
             {messageList.map((item) => (
-              <ChatItem
+              <MessageBubble
                 message={item}
                 key={item.id}
                 setReplyMessage={setReplyMessage}

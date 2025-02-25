@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { View, Text } from 'react-native';
 import { ActionModal } from './actionModal';
 import { ReplyMessage } from './replyMessage';
-import { type ReplyMessageType, type MessageType } from '@/lib/chatData';
 import { cn } from '@/lib/utils';
+import { type MessageType, type ReplyMessageType } from '@/types/chat';
 
 type MessageBubbleProps = {
   message: MessageType;
