@@ -1,14 +1,16 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { ActionModal } from './actionModal';
-import { type MessageType } from '@/lib/chatData';
+import { ReplyMessage } from './replyMessage';
+import { type ReplyMessageType, type MessageType } from '@/lib/chatData';
 import { cn } from '@/lib/utils';
 
 type ChatItemProps = {
   message: MessageType;
+  setReplyMessage: (reply: ReplyMessageType) => void;
 };
 
-export function ChatItem({ message }: ChatItemProps) {
+export function ChatItem({ message, setReplyMessage }: ChatItemProps) {
   const isUser = message.sender === 'Germineau Nicolas';
   // TODO: options Actions
   return (
@@ -25,7 +27,12 @@ export function ChatItem({ message }: ChatItemProps) {
           },
           {
             label: '↩️ Reply',
-            onSelect: () => console.log('Reply to:', message.message),
+            onSelect: () =>
+              setReplyMessage({
+                id: message.id,
+                sender: message.sender,
+                message: message.message,
+              }),
           },
         ]}
         className={cn(
@@ -37,6 +44,7 @@ export function ChatItem({ message }: ChatItemProps) {
         className={`rounded-lg p-3 ${isUser ? 'self-end bg-white' : 'bg-gray-200'}`}
         style={{ maxWidth: 350 }}
       >
+        <ReplyMessage replyMessage={message.replyTo} />
         <Text className="text-sm font-bold">{message.sender}</Text>
         <Text className="text-base">{message.message}</Text>
         <Text className="text-xs text-gray-500">
