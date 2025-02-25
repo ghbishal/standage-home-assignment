@@ -1,3 +1,4 @@
+import * as Clipboard from 'expo-clipboard';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, Text, Image } from 'react-native';
@@ -22,6 +23,10 @@ export function MessageBubble({ message }: MessageBubbleProps) {
 
   const handleTranslate = () => {
     setIsTranslated((prev) => !prev);
+  };
+
+  const copyToClipboard = async (text: string) => {
+    await Clipboard.setStringAsync(text);
   };
 
   return (
@@ -57,7 +62,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         options={[
           {
             label: t('copy'),
-            onSelect: () => console.log('message', message.message),
+            onSelect: () => copyToClipboard(message.message),
           },
           {
             label: isTranslated ? t('translate_en') : t('translate_ja'),
