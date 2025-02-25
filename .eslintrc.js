@@ -5,6 +5,7 @@ module.exports = {
     'prettier',
     'plugin:@typescript-eslint/recommended',
   ],
+  root: true,
   plugins: [
     'prettier',
     'unicorn',

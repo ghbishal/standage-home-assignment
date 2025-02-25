@@ -1,4 +1,4 @@
-import { MessageType } from '@/types/chat';
+import { type MessageType } from '@/types/chat';
 
 export const messages: MessageType[] = [
   {

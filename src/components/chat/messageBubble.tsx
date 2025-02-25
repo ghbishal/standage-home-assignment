@@ -4,19 +4,21 @@ import { View, Text } from 'react-native';
 import { ActionModal } from './actionModal';
 import { ReplyMessage } from './replyMessage';
 import { cn } from '@/lib/utils';
-import { type MessageType, type ReplyMessageType } from '@/types/chat';
+import { useMessageStore } from '@/store/useMessageStore';
+import { useUserStore } from '@/store/useUserStore';
+import { type MessageType } from '@/types/chat';
 
 type MessageBubbleProps = {
   message: MessageType;
-  setReplyMessage: (reply: ReplyMessageType) => void;
 };
 
-export function MessageBubble({
-  message,
-  setReplyMessage,
-}: MessageBubbleProps) {
-  const isUser = message.sender === 'Germineau Nicolas';
+export function MessageBubble({ message }: MessageBubbleProps) {
   const { t } = useTranslation('translation', { keyPrefix: 'chat_item' });
+
+  const { defaultUser } = useUserStore();
+  const isUser = message.sender === defaultUser.name;
+  const { setReplyMessage } = useMessageStore();
+
   // TODO: options Actions
   return (
     <View className={cn('flex-col', isUser ? 'self-end' : 'self-start')}>
