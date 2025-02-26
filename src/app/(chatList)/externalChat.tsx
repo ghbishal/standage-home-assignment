@@ -6,8 +6,9 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { ChatInput, MessageBubble } from '@/components/chat';
+import { MessageBubble } from '@/components/chat';
 
+import { InputArea } from '@/components/chat/inputArea';
 import { StatusSelector } from '@/components/status/statusSelector';
 import { ToolChip } from '@/components/ui/toolChip';
 import { formatDate } from '@/lib/utils';
@@ -50,7 +51,7 @@ export default function ExternalChat() {
             ))}
           </View>
         </ScrollView>
-        <ChatInput />
+        <InputArea />
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

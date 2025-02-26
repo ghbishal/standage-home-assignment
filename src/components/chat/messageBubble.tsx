@@ -2,6 +2,7 @@ import * as Clipboard from 'expo-clipboard';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, Text, Image } from 'react-native';
+import { MarkdownRenderer } from '../editor/markdownRenderer';
 import { StyledIcon } from '../icons/styledIcon';
 import { ToolChip } from '../ui/toolChip';
 import { ActionModal } from './actionModal';
@@ -90,9 +91,14 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         >
           <ReplyMessage replyMessage={message.replyTo} />
           <Text className="text-base">
-            {isTranslated
-              ? getTranslatedMessage(message.id, message.message)
-              : message.message}
+            <MarkdownRenderer
+              children={
+                isTranslated
+                  ? getTranslatedMessage(message.id, message.message)
+                  : message.message
+              }
+              attachments={message.attachments}
+            />
           </Text>
         </View>
       </View>

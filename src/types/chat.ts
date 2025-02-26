@@ -3,6 +3,11 @@ export type ReplyMessageType = {
   sender: string;
   message: string;
 };
+export type Attachment = {
+  name: string;
+  url: string;
+  type: 'pdf' | 'image' | 'doc' | 'other';
+};
 
 export type MessageType = {
   id: number;
@@ -10,4 +15,5 @@ export type MessageType = {
   message: string;
   timestamp: string;
   replyTo?: ReplyMessageType | null;
+  attachments?: Attachment[];
 };

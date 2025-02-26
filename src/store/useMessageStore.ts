@@ -2,13 +2,17 @@ import { create } from 'zustand';
 import i18n from '@/i18n/i18n';
 import { messages as initialMessages } from '@/lib/chatData';
 import { useUserStore } from '@/store/useUserStore';
-import { type MessageType, type ReplyMessageType } from '@/types/chat';
+import {
+  type Attachment,
+  type MessageType,
+  type ReplyMessageType,
+} from '@/types/chat';
 
 interface MessageStore {
   messages: MessageType[];
   replyMessage: ReplyMessageType | null;
   translations: Record<number, { en: string; ja: string }>;
-  addMessage: (message: string) => void;
+  addMessage: (message: string, attachments?: Attachment[]) => void;
   setReplyMessage: (reply: ReplyMessageType | null) => void;
   clearReplyMessage: () => void;
   getTranslatedMessage: (messageId: number, originalMessage: string) => string;
@@ -40,13 +44,14 @@ export const useMessageStore = create<MessageStore>((set, get) => ({
   replyMessage: null,
   translations: preloadedTranslations,
 
-  addMessage: (message) => {
+  addMessage: (message, attachments = []) => {
     const { defaultUser } = useUserStore.getState();
     set((state) => {
       const newMessage: MessageType = {
         id: state.messages.length + 1,
         sender: defaultUser.name,
         message,
+        attachments: attachments,
         timestamp: new Date().toISOString(),
         replyTo: state.replyMessage,
       };
