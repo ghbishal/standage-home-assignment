@@ -9,6 +9,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "prepare": "husky",
+    "prebuild": "npx expo prebuild --clean",
     "lint": "eslint --fix --ext .js,.ts,.tsx ./src --ignore-path .gitignore",
     "type-check": "tsc --noemit"
   },

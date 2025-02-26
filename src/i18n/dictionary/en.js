@@ -19,7 +19,7 @@ export const EN = {
   },
   status: {
     status_history: 'Status History',
-    status_changed: 'Status Changed',
+    status_changed: 'Status',
     new: 'New',
     categorization: 'Categorization',
     ts_in_progress: 'Ts In Progress',

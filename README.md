@@ -64,7 +64,7 @@ npx expo doctor
 
 ---
 
-## 🏰️ Installation & Running in Dev Mode
+## 🏠️ Installation & Running in Dev Mode
 
 ### 1️⃣ **Clone the repository**
 
@@ -106,7 +106,19 @@ npm start
 
 ---
 
-## 🏰️ Technologies Used
+## 🏠️ Building Prebuilds for iOS and Android
+
+To generate the necessary native files for iOS and Android, follow these steps:
+
+### ✨ **Prebuild for Android**
+
+1️⃣ **Run the following command:**
+
+```sh
+npm run prebuild
+```
+
+## 🌍 Technologies Used
 
 This project follows a modern **React Native + Expo** stack with the following key technologies:
 
@@ -120,11 +132,11 @@ This project follows a modern **React Native + Expo** stack with the following k
 
 ---
 
-## 📂 Project Structure
+## 👤 Project Structure
 
 ```plaintext
 standage-home-assignment/
-👉 .
+🔎 .
   ├── app
   │   ├── (chatList)
   │   │   ├── _layout.tsx
@@ -160,56 +172,18 @@ standage-home-assignment/
   │   │   │   ├── index.ts
   │   │   │   ├── plus.tsx
   │   │   │   └── send.tsx
-  │   │   ├── contents
-  │   │   │   ├── bold.tsx
-  │   │   │   ├── index.ts
-  │   │   │   ├── italic.tsx
-  │   │   │   ├── live.tsx
-  │   │   │   ├── personFill.tsx
-  │   │   │   └── setting.tsx
   │   │   ├── iconButton.tsx
   │   │   ├── styledIcon.tsx
   │   │   └── types.ts
-  │   ├── standageLogo.tsx
-  │   ├── status
-  │   │   ├── constants.ts
-  │   │   ├── statusItem.tsx
-  │   │   └── statusSelector.tsx
-  │   └── ui
-  │       ├── button.tsx
-  │       ├── loading.tsx
-  │       ├── styledText.tsx
-  │       └── toolChip.tsx
   ├── i18n
   │   ├── dictionary
   │   │   ├── en.js
   │   │   └── ja.js
   │   └── i18n.ts
-  ├── lib
-  │   ├── chatData.ts
-  │   └── utils.ts
   ├── store
-  │   ├── useMessageStore.ts
-  │   └── useUserStore.ts
   ├── stories
-  │   └── assets
-  └── types
-      ├── chat.ts
-      └── user.ts
-
-👉 Other directories:
-   ├── .expo/        # Expo-specific files, caching, and configurations.
-   ├── .github/      # GitHub-related files (CI/CD workflows, issue templates, etc.).
-   ├── .husky/       # Git hooks for enforcing code quality before commits and pushes.
-   ├── .vscode/      # VSCode-specific settings and configurations for better development experience.
-   ├── android/      # Android-specific native files for running the project on Android devices.
-   ├── ios/          # iOS-specific native files for running the project on iOS devices.
-   ├── node_modules/ # Installed npm dependencies.
-   ├── package.json  # Metadata about the project and dependencies.
-   ├── tailwind.config.js # Configuration for Tailwind CSS.
-   ├── README.md     # Documentation for the project.
-```
-
----
+  ├── types
 
 🚀 **Happy Coding!** 🎉
+
+```
