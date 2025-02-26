@@ -32,7 +32,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
   };
 
   return (
-    <View className={cn('flex-col', isUser ? 'self-end' : 'self-start')}>
+    <View>
       <View
         className={cn(
           'flex-row items-center gap-2 mb-1',
@@ -56,41 +56,45 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           />
         )}
       </View>
-      <ActionModal
-        options={[
-          {
-            label: t('copy'),
-            onSelect: () => copyToClipboard(message.message),
-          },
-          {
-            label: isTranslated ? t('translate_en') : t('translate_ja'),
-            onSelect: handleTranslate,
-          },
-          {
-            label: t('reply'),
-            onSelect: () =>
-              setReplyMessage({
-                id: message.id,
-                sender: message.sender,
-                message: message.message,
-              }),
-          },
-        ]}
-        className={cn(
-          'absolute bottom-0 ',
-          isUser ? 'left-[-20px]' : 'right-[-20px]'
-        )}
-      />
       <View
-        className={`rounded-lg p-3 ${isUser ? 'self-end bg-white' : 'bg-gray-200'}`}
-        style={{ maxWidth: 350 }}
+        className={cn('flex-col relative', isUser ? 'self-end' : 'self-start')}
       >
-        <ReplyMessage replyMessage={message.replyTo} />
-        <Text className="text-base">
-          {isTranslated
-            ? getTranslatedMessage(message.id, message.message)
-            : message.message}
-        </Text>
+        <ActionModal
+          options={[
+            {
+              label: t('copy'),
+              onSelect: () => copyToClipboard(message.message),
+            },
+            {
+              label: isTranslated ? t('translate_en') : t('translate_ja'),
+              onSelect: handleTranslate,
+            },
+            {
+              label: t('reply'),
+              onSelect: () =>
+                setReplyMessage({
+                  id: message.id,
+                  sender: message.sender,
+                  message: message.message,
+                }),
+            },
+          ]}
+          className={cn(
+            'absolute bottom-0 ',
+            isUser ? 'left-[-20px]' : 'right-[-20px]'
+          )}
+        />
+        <View
+          className={`rounded-lg p-3 ${isUser ? 'self-end bg-white' : 'bg-gray-200'}`}
+          style={{ maxWidth: 350 }}
+        >
+          <ReplyMessage replyMessage={message.replyTo} />
+          <Text className="text-base">
+            {isTranslated
+              ? getTranslatedMessage(message.id, message.message)
+              : message.message}
+          </Text>
+        </View>
       </View>
     </View>
   );
