@@ -3,6 +3,7 @@ import { Italic } from './italic';
 import { Live } from './live';
 import { PersonFill } from './personFill';
 import { Setting } from './setting';
+import { Translate } from './translate';
 
 export const ContentsIcons = {
   Setting,
@@ -10,4 +11,5 @@ export const ContentsIcons = {
   Live,
   Bold,
   Italic,
+  Translate,
 };

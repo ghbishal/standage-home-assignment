@@ -69,12 +69,7 @@ export const useMessageStore = create<MessageStore>((set, get) => ({
   getTranslatedMessage: (messageId, originalMessage) => {
     const { translations } = get();
     const detectedLanguage = detectLanguage(originalMessage);
-
-    if (detectedLanguage === 'unknown') {
-      return i18n.language === 'ja'
-        ? 'この言語の翻訳は利用できません'
-        : 'Translation is not available for this language';
-    }
+    const isJapaneseUI = i18n.language === 'ja';
 
     if (translations[messageId]) {
       if (detectedLanguage === 'en') {
@@ -84,7 +79,7 @@ export const useMessageStore = create<MessageStore>((set, get) => ({
       }
     }
 
-    return detectedLanguage === 'ja'
+    return isJapaneseUI
       ? '翻訳はまだ利用できません'
       : 'Translation not available yet';
   },
