@@ -136,53 +136,79 @@ This project follows a modern **React Native + Expo** stack with the following k
 
 ```plaintext
 standage-home-assignment/
-🔎 .
-  ├── app
-  │   ├── (chatList)
-  │   │   ├── _layout.tsx
-  │   │   ├── details.tsx
-  │   │   ├── externalChat.tsx
-  │   │   └── internalChat.tsx
-  │   ├── _layout.tsx
-  │   ├── index.tsx
-  │   └── modal
-  │       └── status.tsx
-  ├── assets
-  │   ├── images
-  │   └── lottiefiles
-  │       └── loading.json
-  ├── components
-  │   ├── chat
-  │   │   ├── actionModal.tsx
-  │   │   ├── chatInput.tsx
-  │   │   ├── index.ts
-  │   │   ├── inputArea.tsx
-  │   │   ├── messageBubble.tsx
-  │   │   └── replyMessage.tsx
-  │   ├── editor
-  │   │   ├── domComponents
-  │   │   │   └── toolbarPlugin.tsx
-  │   │   ├── editor.tsx
-  │   │   └── markdownRenderer.tsx
-  │   ├── icons
-  │   │   ├── action
-  │   │   │   ├── arrowRight.tsx
-  │   │   │   ├── cancle.tsx
-  │   │   │   ├── chevronRight.tsx
-  │   │   │   ├── index.ts
-  │   │   │   ├── plus.tsx
-  │   │   │   └── send.tsx
-  │   │   ├── iconButton.tsx
-  │   │   ├── styledIcon.tsx
-  │   │   └── types.ts
-  ├── i18n
-  │   ├── dictionary
-  │   │   ├── en.js
-  │   │   └── ja.js
-  │   └── i18n.ts
-  ├── store
-  ├── stories
-  ├── types
+🔎.
+├── app
+│   ├── (chatList)
+│   │   ├── _layout.tsx
+│   │   ├── details.tsx
+│   │   ├── externalChat.tsx
+│   │   └── internalChat.tsx
+│   ├── _layout.tsx
+│   ├── index.tsx
+│   └── modal
+│       └── status.tsx
+├── assets
+│   └── lottiefiles
+│       └── loading.json
+├── components
+│   ├── chat
+│   │   ├── actionModal.tsx
+│   │   ├── chatInput.tsx
+│   │   ├── index.ts
+│   │   ├── inputArea.tsx
+│   │   ├── messageBubble.tsx
+│   │   └── replyMessage.tsx
+│   ├── editor
+│   │   ├── domComponents
+│   │   │   └── toolbarPlugin.tsx
+│   │   ├── editor.tsx
+│   │   └── markdownRenderer.tsx
+│   ├── icons
+│   │   ├── action
+│   │   │   ├── arrowRight.tsx
+│   │   │   ├── cancle.tsx
+│   │   │   ├── chevronRight.tsx
+│   │   │   ├── copy.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── plus.tsx
+│   │   │   ├── reply.tsx
+│   │   │   └── send.tsx
+│   │   ├── contents
+│   │   │   ├── bold.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── italic.tsx
+│   │   │   ├── live.tsx
+│   │   │   ├── personFill.tsx
+│   │   │   ├── setting.tsx
+│   │   │   └── translate.tsx
+│   │   ├── iconButton.tsx
+│   │   ├── styledIcon.tsx
+│   │   └── types.ts
+│   ├── standageLogo.tsx
+│   ├── status
+│   │   ├── constants.ts
+│   │   ├── statusItem.tsx
+│   │   └── statusSelector.tsx
+│   └── ui
+│       ├── button.tsx
+│       ├── loading.tsx
+│       ├── styledText.tsx
+│       └── toolChip.tsx
+├── i18n
+│   ├── dictionary
+│   │   ├── en.js
+│   │   └── ja.js
+│   └── i18n.ts
+├── lib
+│   ├── chatData.ts
+│   └── utils.ts
+├── store
+│   ├── useMessageStore.ts
+│   └── useUserStore.ts
+└── types
+    ├── chat.ts
+    └── user.ts
+
 
 🚀 **Happy Coding!** 🎉
 
