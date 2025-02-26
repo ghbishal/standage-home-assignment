@@ -10,7 +10,7 @@ import {
 import { cn } from '@/lib/utils';
 
 type ActionModalProps = {
-  options: { label: string; onSelect: () => void }[];
+  options: { label: string; onSelect: () => void; icon?: React.ReactNode }[];
   className?: string;
 };
 
@@ -77,8 +77,12 @@ export function ActionModal({ options, className }: ActionModalProps) {
                       option.onSelect();
                       closeMenu();
                     }}
-                    className="border-b border-gray-300 py-2 last:border-0"
+                    className={cn(
+                      'py-2 border-gray-300 flex-row gap-2 items-center',
+                      index !== options.length - 1 && 'border-b'
+                    )}
                   >
+                    {option.icon && <View>{option.icon}</View>}
                     <Text className="text-black">{option.label}</Text>
                   </TouchableOpacity>
                 ))}
