@@ -31,7 +31,7 @@ export function StatusItem({ time, statuses, isLastItem = false }: Props) {
               key={`${time}-${index}`}
               className="flex-row items-center gap-1"
             >
-              {index > 0 && <Text className="text-gray-500">→</Text>}
+              {index > 0 && <StyledIcon name="ArrowRight" size="small" />}
               <Text
                 className={cn(
                   'rounded-md px-2 py-1 text-xs font-semibold uppercase',
