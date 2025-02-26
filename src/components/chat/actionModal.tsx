@@ -18,16 +18,27 @@ export function ActionModal({ options, className }: ActionModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef<View>(null);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
+
   const screenWidth = Dimensions.get('window').width;
+  const screenHeight = Dimensions.get('window').height;
+
+  const calculatePosition = (px: number, py: number, height: number) => {
+    const menuWidth = 160;
+    const menuHeight = options.length * 50 + 16;
+
+    const x = px + menuWidth > screenWidth ? screenWidth - menuWidth - 10 : px;
+    const y =
+      py + height + menuHeight > screenHeight
+        ? py - menuHeight + 50
+        : py + height + 3;
+
+    return { x, y };
+  };
 
   const toggleMenu = () => {
-    if (!isOpen && buttonRef.current) {
-      buttonRef.current.measure((_, __, ___, height, px, py) => {
-        let newX = px;
-        if (px + 160 > screenWidth) {
-          newX = screenWidth - 170;
-        }
-        setMenuPosition({ x: newX, y: py + height + 5 });
+    if (!isOpen) {
+      buttonRef.current?.measure((_, __, ___, height, px, py) => {
+        setMenuPosition(calculatePosition(px, py, height));
       });
     }
     setIsOpen((prev) => !prev);

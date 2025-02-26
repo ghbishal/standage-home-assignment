@@ -5,7 +5,7 @@ import '@/i18n/i18n';
 import { Stack } from 'expo-router';
 import { type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Image, TouchableOpacity } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { IconButton } from '@/components/icons/iconButton';
@@ -32,7 +32,11 @@ export default function RootLayout() {
                 />
               </TouchableOpacity>
             ),
-            headerTitle: () => <StandageLogo width={100} />,
+            headerTitle: () => (
+              <View className="items-center">
+                <StandageLogo width={100} />
+              </View>
+            ),
             headerRight: () => <IconButton name="Setting" size="large" />,
           }}
         />
