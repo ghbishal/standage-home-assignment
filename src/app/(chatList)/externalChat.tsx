@@ -7,12 +7,14 @@ import {
   Platform,
 } from 'react-native';
 import { MessageBubble } from '@/components/chat';
-
 import { ChatInput } from '@/components/chat/chatInput';
 import { StatusSelector } from '@/components/status/statusSelector';
 import { ToolChip } from '@/components/ui/toolChip';
 import { formatDate } from '@/lib/utils';
 import { useMessageStore } from '@/store/useMessageStore';
+
+// This supports rich text editor
+// import { InputArea } from '@/components/chat/inputArea';
 
 export default function ExternalChat() {
   const { messages } = useMessageStore();
@@ -52,6 +54,9 @@ export default function ExternalChat() {
           </View>
         </ScrollView>
         <ChatInput />
+
+        {/* // This supports rich text editor but the problem is when you submit message does not clears. */}
+        {/* <InputArea /> */}
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
