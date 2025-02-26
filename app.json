@@ -5,12 +5,24 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "newArchEnabled": true,
-    "userInterfaceStyle": "automatic",
+    "ios": {
+      "usesIcloudStorage": true,
+      "bundleIdentifier": "com.standage.app"
+    },
     "web": {
       "bundler": "metro",
       "output": "static"
     },
-    "plugins": [["expo-router"], "expo-localization"],
+    "plugins": [
+      ["expo-router"],
+      "expo-localization",
+      [
+        "expo-document-picker",
+        {
+          "iCloudContainerEnvironment": "Production"
+        }
+      ]
+    ],
     "experiments": {
       "typedRoutes": true
     },

@@ -7,6 +7,23 @@ export const messages: MessageType[] = [
     message:
       "Let's create some simple views to replicate this code.\n\nYou may use either **React Native** or a **PWA** in an appropriate native wrapper.\n\n## Requirements:\n- Follow the instructions in the gist\n- Use your best judgment to fill in the blanks\n\nGood luck!\n\nNote: we use **tailwindcss**. Attaching files (or taking photos and attaching them) should be supported.",
     timestamp: '2025-02-16T22:58:00+09:00',
+    attachments: [
+      {
+        name: 'Project_Document.pdf',
+        url: 'https://cdn.example.com/files/Project_Document.pdf',
+        type: 'pdf',
+      },
+      {
+        name: 'Company_Logo.png',
+        url: 'https://cdn.example.com/files/Company_Logo.png',
+        type: 'image',
+      },
+      {
+        name: 'Meeting_Notes.docx',
+        url: 'https://cdn.example.com/files/Meeting_Notes.docx',
+        type: 'doc',
+      },
+    ],
   },
   {
     id: 2,

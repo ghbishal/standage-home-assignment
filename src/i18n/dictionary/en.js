@@ -25,4 +25,5 @@ export const EN = {
     ts_in_progress: 'Ts In Progress',
     close: 'Close',
   },
+  attachments: 'Attachments',
 };

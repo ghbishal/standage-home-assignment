@@ -1,6 +1,7 @@
 import { ArrowRight } from './arrowRight';
 import { Cancel } from './cancle';
 import { ChevronRight } from './chevronRight';
+import { Plus } from './plus';
 import { Send } from './send';
 
 export const ActionIcons = {
@@ -8,4 +9,5 @@ export const ActionIcons = {
   Send,
   Cancel,
   ArrowRight,
+  Plus,
 };

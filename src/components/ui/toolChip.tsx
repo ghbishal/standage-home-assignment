@@ -40,5 +40,3 @@ export const ToolChip = ({
     <Text className="text-xs text-white">{label}</Text>
   </View>
 );
-
-ToolChip.displayName = 'ToolChip';

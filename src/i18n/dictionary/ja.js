@@ -25,4 +25,5 @@ export const JA = {
     ts_in_progress: '作業中',
     close: 'クローズ',
   },
+  attachments: 'アタッチメント',
 };
