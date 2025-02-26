@@ -41,8 +41,8 @@ export function ChatInput() {
   };
 
   const handleSend = () => {
-    if (!input.trim()) return;
-    addMessage(input);
+    if (!input.trim() && !attachments) return;
+    addMessage(input, attachments);
     setInput('');
     setAttachments([]);
   };
