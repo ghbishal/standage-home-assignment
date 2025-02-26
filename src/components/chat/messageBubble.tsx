@@ -65,10 +65,12 @@ export function MessageBubble({ message }: MessageBubbleProps) {
             {
               label: t('copy'),
               onSelect: () => copyToClipboard(message.message),
+              icon: <StyledIcon name="Copy" size="xsmall" />,
             },
             {
               label: isTranslated ? t('translate_en') : t('translate_ja'),
               onSelect: handleTranslate,
+              icon: <StyledIcon name="Translate" size="xsmall" />,
             },
             {
               label: t('reply'),
@@ -78,6 +80,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
                   sender: message.sender,
                   message: message.message,
                 }),
+              icon: <StyledIcon name="Reply" size="xsmall" />,
             },
           ]}
           className={cn(
